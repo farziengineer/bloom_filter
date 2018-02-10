@@ -2,7 +2,7 @@ import mmh3
 from bitarray import bitarray
 import csv
 
-size=10
+size=100000000
 inc_by=2
 
 bit_array = bitarray(size)
@@ -71,25 +71,30 @@ def checker(url):
 	bit_array[bit_7]=1
 
 	if bit_array[bit_1] and bit_array[bit_2] \
-	 and bit_array[bit_3] and bit_array[bit_4]
-	  and bit_array[bit_5] and bit_array[bit_6]
+	 and bit_array[bit_3] and bit_array[bit_4] \
+	  and bit_array[bit_5] and bit_array[bit_6] \
 	   and bit_array[bit_7]:
+
 	   return "maybe present"
-	   
-    return "defenitely not present" 
+	return "defenitely not present" 
 
 
 
 def reader_and_writer():
+	global bit_array
 	r = csv.reader(open("top1m.csv"));
 	for row in r:
 		url=row[1]
 		mapper(url);
+	# print "done"
+
+	with open("bloom_filter.txt","wb") as fh:
+		bit_array.tofile(fh)
 
 
-	f=open("bloom_filter.txt","wb")
-	f.write(bit_array)
-	f.close()
+	# f=open("bloom_filter.txt","wb")
+	# f.write(str(bit_array))
+	# f.close()
 
 
 reader_and_writer()
