@@ -38,6 +38,7 @@ def mapper(url):
 # approximately O(n)
 
 def extender(cur_size):
+	global bit_array
 	extra = bit_array[:]
 	bit_array=bitarray(cur_size*2)
 	bit_array=setall(0)
@@ -45,4 +46,4 @@ def extender(cur_size):
 	for idx, bits in enumerate(extra):
 		bit_array[2*idx] = extra[idx]
 
-	
+
