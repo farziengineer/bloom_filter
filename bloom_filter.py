@@ -91,7 +91,8 @@ def checker(url):
 
 def reader_and_writer():
 	global bit_array
-	r = csv.reader(open("test1.csv"));
+	# r = csv.reader(open("test1.csv"));
+	r = csv.reader(open("top1m.csv"));
 	for row in r:
 		url=row[1]
 		mapper(url);
