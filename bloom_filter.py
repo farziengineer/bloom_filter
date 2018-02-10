@@ -2,7 +2,7 @@ import mmh3
 from bitarray import bitarray
 
 
-size=5000
+size=10
 inc_by=2
 
 bit_array = bitarray(size)
@@ -37,3 +37,12 @@ def mapper(url):
 # This is used for making the amortized complexity of insertion
 # approximately O(n)
 
+def extender(cur_size):
+	extra = bit_array[:]
+	bit_array=bitarray(cur_size*2)
+	bit_array=setall(0)
+
+	for idx, bits in enumerate(extra):
+		bit_array[2*idx] = extra[idx]
+
+	
